@@ -1,18 +1,9 @@
 import sys
 from src.exception import CustomException
 from src.components.data_ingestion import DataIngestion
-from dataclasses import dataclass
 
-@dataclass
-class transformationconfig:
-    
-    ratings_path:str = "data/transformed/trans_ratings.csv"
-    users_path:str = "data/transformed/trans_users.csv"
 
 class data_transformation:
-    def __init__(self):
-        self.config = transformationconfig()
-
     # ----------- Books ------------ #
     def trans_books_data(self,books_df):
         try:
@@ -37,8 +28,11 @@ class data_transformation:
     # ----------- ratings ----------- #
             # not required
 
+
+# Temporary test block to check data_transformation pipeline
+'''
 if __name__ == "__main__":
     books,_,_ = DataIngestion().load_data()
     trans = data_transformation()
-    print(trans.trans_books_data(books))
+    print(trans.trans_books_data(books))'''
             

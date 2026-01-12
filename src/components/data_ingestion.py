@@ -36,7 +36,10 @@ class DataIngestion:
             return books,ratings,users
         except Exception as e:
             raise CustomException(e,sys)
-    
-if __name__ == "__main__":
+        
+
+
+# Temporary test block to check data_ingestion pipeline
+"""if __name__ == "__main__":
     data = DataIngestion()
-    print(data.load_data())
+    print(data.load_data())"""

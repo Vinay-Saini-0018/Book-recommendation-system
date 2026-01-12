@@ -47,9 +47,11 @@ class datavalidation:
         except Exception as e:
             raise CustomException(e,sys)
 
-if __name__ == "__main__":
+
+# Temporary test block to test data_validation pipeline
+'''if __name__ == "__main__":
     data_ingestion = DataIngestion()
     books, ratings, users = data_ingestion.load_data()
     validation = datavalidation()
     tht = validation.validate_data(books, ratings, users)
-    print(tht)
+    print(tht)'''

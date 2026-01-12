@@ -12,16 +12,13 @@ from src.components.data_transformation import data_transformation
 class recommendation_model:
         
         def __init__(self,pivot_table,books_data):
-             self.pvt_table = pivot_table
+             self.pivot_table = pivot_table
              self.books = books_data
              self.similarity_score = cosine_similarity(pivot_table)
 
 
         def recommendall(self,book_name):
             try:
-                
-                if book_name not in self.pivot_table.index:
-                    raise ValueError("Book not found in pivot table")
 
                 #fetching index
                 index = np.where(self.pivot_table.index==book_name)[0][0]
@@ -42,7 +39,8 @@ class recommendation_model:
                 raise CustomException(e,sys)
 
 
-if __name__ == "__main__":
+# Temporary test block to verify model_trainer pipeline
+'''if __name__ == "__main__":
      books,ratings_data,users_data = DataIngestion().load_data()
 
      trans = data_transformation()
@@ -58,5 +56,5 @@ if __name__ == "__main__":
      with open('artifacts/model.pkl', 'wb') as f:
          pickle.dump(model, f)
      
-     print("Model saved successfully!")
+     print("Model saved successfully!")'''
 

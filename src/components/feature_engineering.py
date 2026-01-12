@@ -5,13 +5,6 @@ from src.components.data_ingestion import DataIngestion
 from src.components.data_transformation import data_transformation
 from dataclasses import dataclass
 
-                                                                
-books,ratings_data,users_data = DataIngestion().load_data()
-
-#books data after some transformation
-trans = data_transformation()
-books_data = trans.trans_books_data(books)
-
 # ------- Getting Top 50 books -------------
 @dataclass
 class config:
@@ -39,6 +32,8 @@ class feature_engineering:
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
             final_df.to_csv(file_path,index=False)
 
+            print("csv file of top 50 books is saved")
+
 
         except Exception as e:
             raise CustomException(e,sys)
@@ -64,8 +59,13 @@ class feature_engineering:
             raise CustomException(e,sys)
         
 
-
-if __name__ == "__main__":
+# Temporary test block to check feature_engineering pipeline
+'''if __name__ == "__main__":
+    # Load and transform data
+    books, ratings_data, users_data = DataIngestion().load_data()
+    trans = data_transformation()
+    books_data = trans.trans_books_data(books)
+    
     fe = feature_engineering()
-    fe.compute_top_books(books_data,ratings_data)
-    print(fe.computation_for_rec_system(books_data,ratings_data,users_data))
+    fe.compute_top_books(books_data, ratings_data)
+    print(fe.computation_for_rec_system(books_data, ratings_data, users_data))'''
