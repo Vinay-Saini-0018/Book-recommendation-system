@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Top 50 Books</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='index.css')}}">
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <div class="logo">📚 BookHub</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('dashboard')}}" >Home</a></li>
+            <li><a href="{{ url_for('recommend') }}" >Book Recommendation</a></li>
+            <li><a href="{{url_for('about')}}">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>Top 50 Books</h1>
+        <p>Discover the most loved books worldwide</p>
+    </header>
+
+    <!-- Books Section -->
+    <section class="books-container">
+
+        <!-- Book Card -->
+        {% for book in books %}
+            <div class="book-card">
+            <img src="{{ book['Image-URL-M'] }}" alt="Book Cover">
+            <h3>{{ book['Book-Title'] }}</h3>
+            <h4>{{ book['Book-Author'] }}</h4>
+            <div class="rating">{% for i in range(book.avg_rating | int) %}⭐{% endfor %}</div>
+            <p class="reviews">{{ book.no_of_ratings }} ratings</p>
+        </div>
+         {% endfor %}
+        

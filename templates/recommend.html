@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommendation</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='recommend.css')}}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">📚 BookHub</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('dashboard')}}">Home</a></li>
+            <li><a href="{{ url_for('recommend') }}" class="active">Book Recommendation</a></li>
+            <li><a href="{{url_for('about')}}">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>Book Recommendation</h1>
+        <p>Search a book and get similar recommendations</p>
+    </header>
+
+    <!-- Search Bar -->
+    <section class="search-section">
+        <form action="{{ url_for('recommend') }}" method="post">
+            <input type="text" name="book_name" placeholder="Search for a book..." />
+            <button type="submit">Recommend</button>
+        </form>
+    </section>
+
+    {% if not result %}
+    <!-- EMPTY STATE -->
+    <section class="empty-state">
+        <div class="empty-card">
+            <div class="empty-icon">📚</div>
+            <h2>Find Your Next Read</h2>
+            <p>
+                Search for a book to get personalized recommendations.
+            </p>
+            <p class="hint">
+                Example: Harry Potter, Atomic Habits, Rich Dad Poor Dad
+            </p>
+        </div>
+    </section>
+
+    {% elif 'status' not in result %}
+        <!-- Recommended Books -->
+        <section class="books-container">
+
+            {% for book in result %}
+                <div class="book-card">
+                <img src="{{ book[2]}}" alt="Book">
+                <h3>{{book[0]}}</h3>
+                <h4>{{ book[1] }}</h4>
+            </div>
+            {% endfor %}
+        
+        </section>
+
+    {% else %}
+        <section class="no-data-container">
+            <div class="no-data-card">
+                <div class="no-data-icon">📕</div>
+                <h2>Sorry!</h2>
+                <p>
+                    We don’t have this book in our trained dataset yet.
+                </p>
+                <p class="hint">
+                    Try searching for another book or check spelling.
+                </p>
+            </div>
+        </section>
+    {% endif %}
+    
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 BookHub | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>

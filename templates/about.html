@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About | BookHub</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='about.css')}}">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">📚 BookHub</div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('dashboard')}}">Home</a></li>
+            <li><a href="{{ url_for('recommend') }}">Book Recommendation</a></li>
+            <li><a href="{{url_for('about')}}" class="active">About</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>About BookHub</h1>
+        <p>Your smart companion for discovering great books</p>
+    </header>
+
+    <!-- About Section -->
+    <section class="about-container">
+        <div class="about-card">
+            <h2>📖 Our Mission</h2>
+            <p>
+                BookHub helps readers discover books they’ll love using
+                smart recommendations, popularity trends, and user ratings.
+            </p>
+        </div>
+
+        <div class="about-card">
+            <h2>🤖 Smart Recommendations</h2>
+            <p>
+                Our system is designed to suggest books based on similarity,
+                ratings, and reader preferences.
+            </p>
+        </div>
+
+        <div class="about-card">
+            <h2>🚀 Why BookHub?</h2>
+            <p>
+                Clean UI, fast search, scalable design, and future-ready
+                AI-powered recommendations.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>© 2026 BookHub | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>

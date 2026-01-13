@@ -21,11 +21,11 @@ class feature_engineering:
             books_with_nor = books_with_ratings.groupby('Book-Title').count()['Book-Rating'].reset_index()
             books_with_avgr = books_with_ratings.groupby('Book-Title')['Book-Rating'].mean().reset_index()
             popular_books = books_with_nor.merge(books_with_avgr,on=['Book-Title'])
-            popular_books.rename(columns={'Book-Rating_x':'no. of ratings','Book-Rating_y':'avg. rating'},inplace=True)
-            popular_bwgr = popular_books[popular_books['no. of ratings']>=250].sort_values('avg. rating',ascending=False).head(50)
+            popular_books.rename(columns={'Book-Rating_x':'no_of_ratings','Book-Rating_y':'avg_rating'},inplace=True)
+            popular_bwgr = popular_books[popular_books['no_of_ratings']>=250].sort_values('avg_rating',ascending=False).head(50)
             final_cdf = popular_bwgr.merge(books,on='Book-Title').drop_duplicates('Book-Title')
-            final_cdf['avg. rating'] = final_cdf['avg. rating'].round(2)
-            final_df = final_cdf[['Book-Title','no. of ratings','avg. rating','Book-Author','Image-URL-M']]
+            final_cdf['avg_rating'] = final_cdf['avg_rating'].round(2)
+            final_df = final_cdf[['Book-Title','no_of_ratings','avg_rating','Book-Author','Image-URL-M']]
 
             #saving the file
             file_path = config().top_books_path
