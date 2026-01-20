@@ -1,6 +1,7 @@
 import sys
 import pickle
 from src.exception import CustomException
+from src.logger import logging
 
 
 class predict_pipeline:
@@ -13,13 +14,18 @@ class predict_pipeline:
         
     def prediction(self,book_name):
         try:
+            logging.info("prediction started")
             if book_name not in self.model.pivot_table.index:
                 return{
                     "status":"error",
                     "message": "book not found in trained data"
                 }
+            logging.info("prediction completed")
             return self.model.recommendall(book_name)
+            
+
         except Exception as e:
+            logging.info("error occured in prediction pipeline")
             raise CustomException(e,sys)
         
 if __name__ == "__main__":

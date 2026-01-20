@@ -1,12 +1,14 @@
 import sys
 from src.exception import CustomException
 from src.components.data_ingestion import DataIngestion
+from src.logger import logging
 
 
 class data_transformation:
     # ----------- Books ------------ #
     def trans_books_data(self,books_df):
         try:
+            logging.info("Transformation in books data is started")
              # Drop image columns if they exist
             img_cols = ["Image-URL-S", "Image-URL-L"]
             books_df = books_df.drop(columns=img_cols, errors="ignore")   #if column not found it ignore error
@@ -18,7 +20,9 @@ class data_transformation:
             books_df = books_df.drop_duplicates()
 
             return books_df
+            logging.info("Transformation only in books data completed")
         except Exception as e:
+            logging.error("Error occured")
             raise CustomException(e,sys)
     
     # ---------- users ----------- #

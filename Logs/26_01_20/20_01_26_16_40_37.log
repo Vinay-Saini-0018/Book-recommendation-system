@@ -1,0 +1,6 @@
+2026-01-20 16:40:40,924-root-INFO-Data ingestion started
+2026-01-20 16:40:43,902-root-INFO-Validating data
+2026-01-20 16:40:45,167-root-INFO-Transformation in books data is started
+2026-01-20 16:40:45,683-root-INFO-Doing feature engineering
+2026-01-20 16:40:48,361-root-INFO-csv file of top 50 books is saved
+2026-01-20 16:40:48,400-root-INFO-finding best top users and books from data

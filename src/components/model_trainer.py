@@ -7,6 +7,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 from src.components.feature_engineering import feature_engineering
 from src.components.data_ingestion import DataIngestion
 from src.components.data_transformation import data_transformation
+from src.logger import logging
 
 
 class recommendation_model:
@@ -36,6 +37,7 @@ class recommendation_model:
                 return data
         
             except Exception as e:
+                logging.error("exception raised in model_TRAINER file")
                 raise CustomException(e,sys)
 
 

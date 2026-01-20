@@ -2,6 +2,7 @@ import pandas as pd
 from src.exception import CustomException
 import sys
 from dataclasses import dataclass
+from src.logger import logging
 
 @dataclass
 class DataIngestionconfig:
@@ -30,11 +31,15 @@ class DataIngestion:
    
     def load_data(self):
         try:
+            logging.info("Data ingestion started")
             books = pd.read_csv(self.ingestion_config.books_path)
             ratings = pd.read_csv(self.ingestion_config.ratings_path)
             users = pd.read_csv(self.ingestion_config.Users_path)
             return books,ratings,users
+            
+            loggine.info("Data ingected Successfully.")
         except Exception as e:
+            logging.error("Error occoured while ingecting data")
             raise CustomException(e,sys)
         
 

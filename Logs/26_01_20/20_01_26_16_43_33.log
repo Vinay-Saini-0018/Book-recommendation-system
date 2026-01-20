@@ -1,0 +1,10 @@
+2026-01-20 16:43:36,754-root-INFO-Data ingestion started
+2026-01-20 16:43:40,841-root-INFO-data loaded successfullly in training pipeline
+2026-01-20 16:43:40,841-root-INFO-Validating data
+2026-01-20 16:43:42,402-root-INFO-Transformation in books data is started
+2026-01-20 16:43:43,076-root-INFO-Doing feature engineering
+2026-01-20 16:43:46,620-root-INFO-csv file of top 50 books is saved
+2026-01-20 16:43:46,668-root-INFO-finding best top users and books from data
+2026-01-20 16:43:49,374-root-INFO-model training completed
+2026-01-20 16:43:49,936-root-INFO-model exported successfully
+2026-01-20 16:43:49,937-root-INFO-Training pipeline completed successfully.

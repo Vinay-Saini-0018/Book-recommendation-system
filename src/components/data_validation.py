@@ -2,6 +2,7 @@ import sys
 from src.exception import CustomException
 from src.components.data_ingestion import DataIngestion
 from dataclasses import dataclass
+from src.logger import logging
 
 @dataclass
 class datavalidationconfig:
@@ -15,6 +16,7 @@ class datavalidation:
 
     def validate_data(self,books_df,ratings_df,users_df):
         try:
+            logging.info("Validating data")
             # checking for empty dataframe
             if books_df.empty or ratings_df.empty or users_df.empty:
                 raise ValueError("your data is empty")
@@ -36,6 +38,7 @@ class datavalidation:
             duplicates_in_books = books_df.duplicated().sum()
             duplicates_in_ratings = ratings_df.duplicated().sum()
             duplicates_in_users = users_df.duplicated().sum()
+            
 
             return {
                 'status': 'success',
@@ -43,8 +46,11 @@ class datavalidation:
                 'r_duplicates':int(duplicates_in_ratings),
                 'u_duplicates':int(duplicates_in_users)
             }
-        
+            logging.info("Validation Completed")
+            logging.info(f"duplicates in books : {duplicates_in_books} \n duplicates in ratings :{duplicates_in_ratings} \nduplicates in users :{duplicates_in_users}")
+
         except Exception as e:
+            logging.info("Error occured in data_validation file")
             raise CustomException(e,sys)
 
 

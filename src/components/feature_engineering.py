@@ -4,6 +4,7 @@ from src.exception import CustomException
 from src.components.data_ingestion import DataIngestion
 from src.components.data_transformation import data_transformation
 from dataclasses import dataclass
+from src.logger import logging
 
 # ------- Getting Top 50 books -------------
 @dataclass
@@ -17,6 +18,7 @@ class feature_engineering:
 
     def compute_top_books(self,books,ratings):
         try:
+            logging.info("Doing feature engineering")
             books_with_ratings = books.merge(ratings,on="ISBN")
             books_with_nor = books_with_ratings.groupby('Book-Title').count()['Book-Rating'].reset_index()
             books_with_avgr = books_with_ratings.groupby('Book-Title')['Book-Rating'].mean().reset_index()
@@ -32,7 +34,7 @@ class feature_engineering:
             os.makedirs(os.path.dirname(file_path), exist_ok=True)
             final_df.to_csv(file_path,index=False)
 
-            print("csv file of top 50 books is saved")
+            logging.info("csv file of top 50 books is saved")
 
 
         except Exception as e:
@@ -40,7 +42,7 @@ class feature_engineering:
         
     def computation_for_rec_system(self,books,ratings,users):
         try:
-            
+            logging.info("finding best top users and books from data")
             books_with_ratings = books.merge(ratings,on="ISBN")
             x = books_with_ratings.groupby('User-ID').count()['Book-Title']>=200
             padhe_likhe_users = x[x].index
@@ -53,9 +55,11 @@ class feature_engineering:
             pivot_table.fillna(0,inplace=True)
 
             return pivot_table
+            logging.info("pivot table created successfully")
 
 
         except Exception as e:
+            logging.error("error raised in feature_engineering file")
             raise CustomException(e,sys)
         
 
