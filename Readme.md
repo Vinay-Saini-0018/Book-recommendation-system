@@ -6,7 +6,7 @@ A smart book recommendation system that suggests books based on what other reade
 
 🔗 **[Try it Live Here](https://book-recommendation-system-d6pr.onrender.com/)** 
 
-## 📖 About The Project
+## About The Project
 
 This project helps book lovers discover new books they might enjoy. It analyzes reading patterns of thousands of users and recommends books similar to the ones you already like. Think of it as having a personal librarian who knows your taste!
 
@@ -15,7 +15,7 @@ This project helps book lovers discover new books they might enjoy. It analyzes 
 The system uses **collaborative filtering** and **cosine similarity** to find books that are similar based on user ratings. When you select a book you like, it finds other books that were enjoyed by readers with similar tastes.
 
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - **Python** - Core programming language
 - **Flask** - Web framework for the application
@@ -25,14 +25,14 @@ The system uses **collaborative filtering** and **cosine similarity** to find bo
 - **HTML/CSS** - Frontend interface
 - **Jupyter Notebook** - Data analysis and model development
 
-## 📊 Dataset
+## Dataset
 
 The system uses three main datasets:
 - **Books Data**: Contains book titles, authors, publishers, and other details
 - **Users Data**: Information about users who rated the books
 - **Ratings Data**: User ratings for different books
 
-## 🚀 Getting Started
+## Getting Started
 
 Follow these simple steps to run the project on your local machine:
 
@@ -63,7 +63,7 @@ Make sure you have Python installed on your system. You can download it from [py
    Navigate to http://127.0.0.1:5000/ in your web browser
 ```
 
-## 💡 How to Use
+## How to Use
 
 1. **Browse Popular Books**: Check out the homepage to see the most popular books
 2. **Search for a Book**: Enter a book title you've enjoyed
@@ -72,7 +72,7 @@ Make sure you have Python installed on your system. You can download it from [py
 
 
 
-## 🧠 How The Recommendation Works
+## How The Recommendation Works
 
 ### Step-by-Step Process:
 
